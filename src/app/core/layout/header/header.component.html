@@ -1,0 +1,22 @@
+<header>
+  <div class="container">
+    <mat-toolbar>
+      <div class="logo-section">
+        <a href="https://www.ibm.com/" class="logo-link" target="_blank">
+          <img [ngSrc]="logoSrc" width="72" height=50 class="logo" alt="IBM logo">
+        </a>
+      </div>
+      <div class="project-title">
+        <a href="/" class="project-link">
+          <span class="project-txt-1">Finance</span>
+          <span class="project-txt-2">Control</span>
+        </a>
+      </div>
+      <div class="nav-bar">
+        <a mat-button routerLink="/transactions" class="nav-button" id="button1">Transactions</a>
+        <a mat-button routerLink="/login" class="nav-button" id="button2">Login</a>
+      </div>
+    </mat-toolbar>
+    <mat-divider></mat-divider>
+  </div>
+</header>

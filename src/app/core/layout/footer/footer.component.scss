@@ -1,0 +1,28 @@
+footer * {
+  font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.footer-section {
+  background-color: #f4f4f4;
+  height: 50px;
+  padding: 0 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .footer-text {
+    color: #c6c6c6;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    text-decoration: none !important;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+
+
+
