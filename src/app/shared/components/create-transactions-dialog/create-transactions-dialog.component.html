@@ -1,0 +1,22 @@
+<section class="dialog-section">
+  <div class="head">
+    <h1 mat-dialog-title>New transaction</h1>
+    <p class="subtitle">Enter date, value and category here:</p>
+  </div>
+  <div mat-dialog-content class="form-content">
+    <form>
+      <mat-form-field appearance="fill" class="full-width">
+        <textarea matInput placeholder="E.g.: 2024-01-29, 10.00, category"
+                  class="auto-expand-textarea"
+                  name="transactionInput"
+                  rows="8"
+                  [(ngModel)]="transactionInput"></textarea>
+      </mat-form-field>
+    </form>
+  </div>
+  <div mat-dialog-actions class="dialog-actions">
+    <button mat-button (click)="onCancelClick()" class="cancel-button">Cancel</button>
+    <button mat-button cdkFocusInitial class="save-button" (click)="onSaveClick()">Save</button>
+  </div>
+
+</section>

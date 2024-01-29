@@ -1,0 +1,71 @@
+
+section {
+  min-width: 380px;
+  min-height: 400px;
+  background-color: #FFFFFF;
+  padding: 15px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 0 18px;
+
+  h1 {
+    color: #0043CE;
+    font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0;
+    padding: 0 0 20px 0;
+  }
+
+  .subtitle {
+    color: #2f2f2f;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+    padding: 0 0 5px 0;
+  }
+}
+
+.form-content {
+  margin: 0;
+  padding: 0 18px;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.dialog-actions {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20px 10px 10px;
+
+  .cancel-button {
+    background-color: #ffffff;
+    color: #000000;
+    margin-right: 8px;
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
+
+  .save-button {
+    background-color: #0F62FE;
+    color: #FFFFFF;
+    margin-right: 20px;
+
+    &:hover {
+      background-color: #08317a;
+    }
+  }
+}
+
