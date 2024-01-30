@@ -1,0 +1,13 @@
+<section class="delete-all-dialog">
+  <div class="title">
+    <h1 mat-dialog-title>Delete all transactions</h1>
+    <div class="subtitles">
+      <p class="question-subtitle">Do you really want to delete all transactions?</p>
+      <p class="info-subtitle">Attention! This action cannot be reversed.</p>
+    </div>
+  </div>
+  <div mat-dialog-actions class="dialog-content">
+    <button mat-button (click)="onCancel()" class="cancel-button button">Cancel</button>
+    <button mat-button color="warn" (click)="onDelete()" class="delete-button button">Delete</button>
+  </div>
+</section>
