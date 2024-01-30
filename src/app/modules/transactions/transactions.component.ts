@@ -11,14 +11,11 @@ import {MatDialog} from "@angular/material/dialog";
 })
 export class TransactionsComponent implements OnInit {
 
-
   constructor(public dialog: MatDialog) {
   }
 
   openCreateTransactionDialog(): void {
-    this.dialog.open(CreateTransactionsDialogComponent, {
-
-    });
+    this.dialog.open(CreateTransactionsDialogComponent, {});
   }
 
   ngOnInit(): void {

@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
+import {CreateTransactionsPayload, TransactionsService} from '@shared/services/transactions.service';
+import {Transaction} from "@shared/types/transaction";
 
 @Component({
   selector: 'app-create-transactions-dialog',
@@ -7,31 +9,41 @@ import {MatDialogRef} from '@angular/material/dialog';
   styleUrls: ['./create-transactions-dialog.component.scss']
 })
 export class CreateTransactionsDialogComponent {
-  transactionInput: string = ''; // Propriedade para armazenar o valor do textarea
+  transactionInput: string = '';
 
-  constructor(public dialogRef: MatDialogRef<CreateTransactionsDialogComponent>) {
+  constructor(
+    public dialogRef: MatDialogRef<CreateTransactionsDialogComponent>,
+    private transactionsService: TransactionsService
+  ) {
   }
 
   onCancelClick(): void {
     this.dialogRef.close();
   }
 
-  onSaveClick(): void {
-    const payload = {
-      transactions: this.transactionInput.split('\n').map(line => {
-        const [date, value, category] = line.split(',').map(item => item.trim());
-        if (line.split(',').length !== 3) {
-          return {error: 'Invalid Format: ' + line};
-        }
-        return {
-          date: date,
-          value: parseFloat(value.replace(',', '.')),
-          category: category
-        };
-      })
-    };
+  private parseTransaction(line: string): Transaction {
+    const data = line.split(",");
+    if (data.length > 3) throw new Error("Invalid Format");
 
-    // console.log(payload);
+    const [date, value, category] = data.map((item) => item.trim());
+    const parsedDate = new Date(date);
+    if (isNaN(parsedDate.getTime())) throw new Error("Invalid Date");
+
+    const dateWithoutTime = parsedDate.toISOString().split("T")[0];
+    return {date: dateWithoutTime, value: parseFloat(value), category};
+  }
+
+  onSaveClick(): void {
+    const lines = this.transactionInput
+      .split("\n")
+      .filter(line => line);
+    const transactions = lines.map((line) => this.parseTransaction(line));
+    const payload: CreateTransactionsPayload = {transactions};
+
+    this.transactionsService.createTransactions(payload).subscribe({
+      complete: () => console.log('Success to create transactions!', payload),
+      error: (error) => console.error('Error to create transactions!', error)
+    });
 
     this.dialogRef.close(payload);
   }
