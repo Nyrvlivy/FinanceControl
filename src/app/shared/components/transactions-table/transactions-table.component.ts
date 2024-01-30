@@ -34,10 +34,10 @@ export class TransactionsTableComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.loadTransactions();
+    this.loadFilteredTransactions();
     this.transactionsSub = this.transactionsService.getTransactionsUpdateListener()
       .subscribe(() => {
-        this.loadTransactions();
+        this.loadFilteredTransactions();
       });
   }
 
@@ -49,8 +49,8 @@ export class TransactionsTableComponent implements OnInit, OnDestroy {
     this.isTotalVisible = !this.isTotalVisible;
   }
 
-  loadTransactions() {
-    this.transactionsService.findAllTransactions().subscribe(transactions => {
+  loadFilteredTransactions(date?: string, category?: string): void {
+    this.transactionsService.filterTransactions(date, category).subscribe(transactions => {
       this.dataSource.data = transactions;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -65,7 +65,7 @@ export class TransactionsTableComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
       if (result && result.updated) {
-        this.loadTransactions();
+        this.loadFilteredTransactions();
       }
     });
   }
@@ -78,7 +78,7 @@ export class TransactionsTableComponent implements OnInit, OnDestroy {
     this.transactionsService.deleteTransaction(id).subscribe({
       next: () => {
         this.snackBar.open(`Transaction ${id} deleted successfully!`, 'Close', {duration: 3000});
-        this.loadTransactions();
+        this.loadFilteredTransactions();
       },
       error: (err) => {
         this.snackBar.open(`Error: ${err.message}`, 'Close', {duration: 3000});

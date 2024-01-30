@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Transaction} from '@shared/types/transaction';
 import {Observable, Subject, tap} from 'rxjs';
 
@@ -23,6 +23,17 @@ export class TransactionsService {
 
   findAllTransactions(): Observable<Transaction[]> {
     return this.http.get<Transaction[]>(this.baseUrl);
+  }
+
+  filterTransactions(date?: string, category?: string): Observable<Transaction[]> {
+    let params = new HttpParams();
+    if (date) {
+      params = params.append('date', date);
+    }
+    if (category) {
+      params = params.append('category', category);
+    }
+    return this.http.get<Transaction[]>(this.baseUrl, {params});
   }
 
   createTransactions(transactions: CreateTransactionsPayload) {

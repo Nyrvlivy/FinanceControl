@@ -15,7 +15,7 @@ main {
     .left-side {
       display: flex;
       flex-direction: column;
-      width: calc(100% - 260px);
+      width: calc(100% - 180px);
       margin-top: 15px;
 
       .title-section, .content-section {
@@ -58,11 +58,21 @@ main {
           flex-direction: row;
           flex-wrap: nowrap;
           max-width: 100%;
-          padding-right: 13%;
+          padding-right: 5%;
           margin-bottom: 15px;
+          align-items: center;
 
           .filters {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
 
+            .filter-form {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+            }
           }
 
           .buttons {
@@ -70,6 +80,7 @@ main {
             flex-direction: row;
             flex-wrap: nowrap;
             justify-content: flex-end;
+            align-items: center;
 
             .button {
               display: flex;
@@ -94,7 +105,7 @@ main {
 
             .delete-all-button {
               background: #DA1E28;
-              margin-left: 20px;
+              margin-left: 10px;
 
               &:hover {
                 background: #98131b;
@@ -107,7 +118,7 @@ main {
     }
 
     .right-side {
-      width: 260px;
+      width: 180px;
       height: 100%;
       display: flex;
       align-items: center;
@@ -115,8 +126,35 @@ main {
 
       img {
         height: 830px;
-        width: 260px;
+        width: 180px;
       }
     }
   }
+}
+
+
+.filters {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+
+  .filter-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.date-form {
+  width: 180px;
+}
+
+.category-form {
+  width: 220px;
+  margin: 0 10px;
+}
+
+.clearFilterButton {
+  width: 30px;
 }

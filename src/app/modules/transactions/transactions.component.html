@@ -11,7 +11,25 @@
       <div class="content-section">
         <div class="nav">
           <div class="filters">
-
+            <div class="filter-form">
+              <mat-form-field appearance="fill" class="date-form">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="filterDate" (dateChange)="applyFilters()"
+                >
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="category-form">
+                <mat-label>Category</mat-label>
+                <mat-select [(value)]="filterCategory" (selectionChange)="applyFilters()">
+                  <mat-option [value]="''">All Categories</mat-option>
+                  <mat-option *ngFor="let category of uniqueCategories" [value]="category">
+                    {{ category }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <button mat-button (click)="clearFilters()" class="clearFilterButton">Clear</button>
+            </div>
           </div>
           <div class="buttons">
             <button class="new-transaction-button button" mat-button (click)="openCreateTransactionDialog()">Create new</button>
