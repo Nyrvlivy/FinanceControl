@@ -40,4 +40,12 @@ export class TransactionsService {
       })
     );
   }
+
+  deleteTransaction(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}`).pipe(
+      tap(() => {
+        this.transactionsUpdated.next();
+      })
+    );
+  }
 }

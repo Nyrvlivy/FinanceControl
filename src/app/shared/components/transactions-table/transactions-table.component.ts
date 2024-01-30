@@ -7,6 +7,7 @@ import {Subscription} from "rxjs";
 import {MatDialog} from "@angular/material/dialog";
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatSort} from "@angular/material/sort";
 
 @Component({
@@ -26,7 +27,8 @@ export class TransactionsTableComponent implements OnInit, OnDestroy {
 
   constructor(
     private transactionsService: TransactionsService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {
     this.dataSource = new MatTableDataSource<Transaction>();
   }
@@ -68,10 +70,19 @@ export class TransactionsTableComponent implements OnInit, OnDestroy {
     });
   }
 
-  deleteTransaction(id: number) {
-  }
-
   calculateTotal(): number {
     return this.dataSource.data.reduce((acc, transaction) => acc + transaction.value, 0);
+  }
+
+  deleteTransaction(id: number) {
+    this.transactionsService.deleteTransaction(id).subscribe({
+      next: () => {
+        this.snackBar.open(`Transaction ${id} deleted successfully!`, 'Close', {duration: 3000});
+        this.loadTransactions();
+      },
+      error: (err) => {
+        this.snackBar.open(`Error: ${err.message}`, 'Close', {duration: 3000});
+      }
+    });
   }
 }
