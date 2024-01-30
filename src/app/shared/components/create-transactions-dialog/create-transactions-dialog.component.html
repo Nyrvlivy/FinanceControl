@@ -6,11 +6,12 @@
   <div mat-dialog-content class="form-content">
     <form>
       <mat-form-field appearance="fill" class="full-width">
-        <textarea matInput placeholder="E.g.: 2024-01-29, 10.00, category"
+        <textarea matInput placeholder=""
                   class="auto-expand-textarea"
                   name="transactionInput"
-                  rows="8"
+                  rows="10"
                   [(ngModel)]="transactionInput"></textarea>
+        <mat-label>E.g.: 2024-01-29, 10.00, category</mat-label>
       </mat-form-field>
     </form>
   </div>
