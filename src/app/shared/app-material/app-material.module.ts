@@ -11,7 +11,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from "@angular/material/toolbar";
-import { MatSortModule } from '@angular/material/sort';
+import {MatSortModule} from '@angular/material/sort';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   exports: [
@@ -25,6 +26,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
+    MatSnackBarModule,
     MatSortModule,
   ],
 

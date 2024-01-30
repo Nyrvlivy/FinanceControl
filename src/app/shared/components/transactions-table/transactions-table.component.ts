@@ -1,10 +1,13 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Transaction} from '@shared/types/transaction';
 import {TransactionsService} from '@shared/services/transactions.service';
-import {MatTableDataSource} from '@angular/material/table';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from "@angular/material/sort";
+import {UpdateTransactionDialogComponent} from "@shared/components/update-transaction-dialog/update-transaction-dialog.component";
+
 import {Subscription} from "rxjs";
+import {MatDialog} from "@angular/material/dialog";
+import {MatPaginator} from '@angular/material/paginator';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatSort} from "@angular/material/sort";
 
 @Component({
   selector: 'app-transactions-table',
@@ -21,7 +24,10 @@ export class TransactionsTableComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator | null = null;
   private transactionsSub: Subscription | null = null;
 
-  constructor(private transactionsService: TransactionsService) {
+  constructor(
+    private transactionsService: TransactionsService,
+    public dialog: MatDialog
+  ) {
     this.dataSource = new MatTableDataSource<Transaction>();
   }
 
@@ -49,7 +55,17 @@ export class TransactionsTableComponent implements OnInit, OnDestroy {
     });
   }
 
-  updateTransaction(id: number) {
+  openUpdateTransactionDialog(transaction: Transaction) {
+    const dialogRef = this.dialog.open(UpdateTransactionDialogComponent, {
+      data: {...transaction}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      if (result && result.updated) {
+        this.loadTransactions();
+      }
+    });
   }
 
   deleteTransaction(id: number) {

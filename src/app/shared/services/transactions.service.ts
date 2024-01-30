@@ -33,4 +33,11 @@ export class TransactionsService {
     );
   }
 
+  updateTransaction(updatedTransaction: Transaction): Observable<Transaction> {
+    return this.http.put<Transaction>(`${this.baseUrl}/${updatedTransaction.id}`, updatedTransaction).pipe(
+      tap(() => {
+        this.transactionsUpdated.next();
+      })
+    );
+  }
 }

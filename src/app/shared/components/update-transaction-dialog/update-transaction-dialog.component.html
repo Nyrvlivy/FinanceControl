@@ -1,0 +1,36 @@
+<section class="update-dialog-section">
+  <div class="head">
+    <h1 mat-dialog-title>Update transaction</h1>
+    <p class="subtitle">Enter your updated transaction details below:</p>
+  </div>
+  <div mat-dialog-content class="form-content">
+    <form>
+      <mat-form-field>
+        <mat-label>ID</mat-label>
+        <input matInput [value]="transaction.id" disabled placeholder="Transaction ID">
+        <span matSuffix class="material-symbols-outlined lock-icon">lock</span>
+      </mat-form-field>
+      <div class="date-value-container">
+        <mat-form-field>
+          <mat-label>Date</mat-label>
+          <input matInput type="date" [(ngModel)]="transaction.date" (ngModelChange)="updateFormValidate()" name="date" required
+                 placeholder="Enter Date">
+        </mat-form-field>
+        <mat-form-field class="value-field">
+          <mat-label>Value</mat-label>
+          <input matInput type="number" [(ngModel)]="transaction.value" (ngModelChange)="updateFormValidate()" name="value"
+                 required placeholder="Enter Value">
+        </mat-form-field>
+      </div>
+      <mat-form-field>
+        <mat-label>Category</mat-label>
+        <input matInput [(ngModel)]="transaction.category" (ngModelChange)="updateFormValidate()" name="category" required
+               placeholder="Enter Category">
+      </mat-form-field>
+    </form>
+  </div>
+  <div mat-dialog-actions class="dialog-actions">
+    <button mat-button (click)="onCancelClick()" class="cancel-button">Cancel</button>
+    <button mat-button (click)="onSaveClick()" [ngClass]="{'active': isFormValid}" class="save-button">Save</button>
+  </div>
+</section>

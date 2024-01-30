@@ -1,26 +1,19 @@
-
 section {
   min-width: 380px;
   min-height: 400px;
   background-color: #FFFFFF;
-  padding: 15px !important;
+  padding: 13px 8px 0 8px;
   display: flex;
   flex-direction: column;
-  align-items: start;
 }
 
 .head {
-  display: flex;
-  flex-direction: column;
-  margin: 0 0 0 18px;
-
   h1 {
     color: #0043CE;
     font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
     font-size: 30px;
     font-weight: 700;
-    margin: 0;
-    padding: 0 0 20px 0;
+    margin: 0 0 15px;
   }
 
   .subtitle {
@@ -28,29 +21,28 @@ section {
     font-size: 14px;
     font-weight: 500;
     margin: 0;
-    padding: 0 0 20px 0;
+    padding: 0 0 0 23px;
   }
 }
 
 .form-content {
-  margin: 0;
-  padding: 0 18px;
   width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
 }
 
-.full-width {
+mat-form-field {
   width: 100%;
-  margin: 0;
-  padding: 0;
 }
 
 .dialog-actions {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-content: flex-start;
-  margin: 2px 20px 3px 10px;
-  padding: 0 7px 0 7px;
+  align-content: center;
+  margin: 0;
+  padding: 0 4px 32px 24px;
 
   .cancel-button {
     background-color: #ffffff;
@@ -63,13 +55,34 @@ section {
   }
 
   .save-button {
+    background-color: #cccccc;
+    color: #666666;
+    margin-right: 20px;
+
+    &:hover {
+      background-color: #cccccc;
+    }
+  }
+
+  .save-button.active {
     background-color: #0F62FE;
     color: #FFFFFF;
-    margin-right: 20px;
 
     &:hover {
       background-color: #08317a;
     }
   }
 }
+
+.value-field {
+  align-items: flex-start;
+  display: flex;
+}
+
+.lock-icon {
+  color: #838383;
+  padding-right: 15px;
+}
+
+
 
