@@ -60,7 +60,12 @@
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons=""></mat-paginator>
     <div class="total-row">
       <span class="total-label">TOTAL: </span>
-      <span class="total-value">$ {{ calculateTotal() }}</span>
+      <button *ngIf="isTotalVisible" mat-button (click)="toggleTotalVisibility()" class="total-value">
+        $ {{ calculateTotal() }}
+      </button>
+      <button *ngIf="!isTotalVisible" mat-icon-button (click)="toggleTotalVisibility()">
+        <mat-icon class="material-symbols-outlined icon-toggle-visibility">visibility_off</mat-icon>
+      </button>
     </div>
   </div>
 </section>

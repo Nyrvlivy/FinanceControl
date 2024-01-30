@@ -85,19 +85,32 @@
       }
 
       .total-value {
+        color: #FFFFFF;
         font-size: 14px;
-        font-weight: 600;
+        font-weight: 500;
+
+        & hover {
+          background-color: #0043CE
+        }
       }
     }
   }
 }
 
 .icon-edit {
-  color: green;
+  color: #24A148;
 }
 
 .icon-delete {
-  color: red;
+  color: #DA1E28;
+}
+
+.icon-toggle-visibility {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 22px;
 }
 
 .material-symbols-outlined {

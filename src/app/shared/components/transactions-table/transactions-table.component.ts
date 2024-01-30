@@ -12,10 +12,12 @@ import {Subscription} from "rxjs";
   styleUrls: ['./transactions-table.component.scss']
 })
 export class TransactionsTableComponent implements OnInit, OnDestroy {
+
+  isTotalVisible: boolean = false;
   dataSource: MatTableDataSource<Transaction>;
   displayedColumns: string[] = ['id', 'date', 'value', 'category', 'manage'];
 
-  @ViewChild(MatSort, { static: true }) sort: MatSort | null = null;
+  @ViewChild(MatSort, {static: true}) sort: MatSort | null = null;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator | null = null;
   private transactionsSub: Subscription | null = null;
 
@@ -33,6 +35,10 @@ export class TransactionsTableComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     if (this.transactionsSub) this.transactionsSub.unsubscribe();
+  }
+
+  toggleTotalVisibility() {
+    this.isTotalVisible = !this.isTotalVisible;
   }
 
   loadTransactions() {
