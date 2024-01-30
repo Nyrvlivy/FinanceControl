@@ -17,7 +17,6 @@
   </div>
   <div mat-dialog-actions class="dialog-actions">
     <button mat-button (click)="onCancelClick()" class="cancel-button">Cancel</button>
-    <button mat-button cdkFocusInitial class="save-button" (click)="onSaveClick()">Save</button>
+    <button mat-button (click)="onSaveClick()" [ngClass]="{'error-button': !isCreateFormValid}" class="save-button">Save</button>
   </div>
-
 </section>

@@ -51,8 +51,8 @@ export class UpdateTransactionDialogComponent {
         this.snackBar.open(`Transaction ${updatedTransaction.id} updated successfully`, 'Close', {duration: 3000});
         this.dialogRef.close({updated: true, transaction: updatedTransaction});
       },
-      error: () => {
-        this.snackBar.open('Error updating transaction', 'Close', {duration: 3000});
+      error: (err) => {
+        this.snackBar.open(`Error: ${err.message}`, 'Close', {duration: 3000});
       }
     });
   }

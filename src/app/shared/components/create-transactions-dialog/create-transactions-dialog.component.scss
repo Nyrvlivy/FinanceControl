@@ -70,6 +70,17 @@ section {
     &:hover {
       background-color: #08317a;
     }
+
+    .error-button {
+      background-color: #d32f2f;
+      color: #FFFFFF;
+
+      &:hover {
+        background-color: #9a0007;
+      }
+    }
+
   }
+
 }
 
