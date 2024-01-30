@@ -1,15 +1,30 @@
 <main>
   <div class="main-container">
-    <div class="title-section">
-      <a class="back-link" routerLink="/">
-        <span class="material-symbols-outlined back-icon">arrow_back_ios</span>
-        <span>Home</span>
-      </a>
-      <h1 class="main-title">Transaction Management</h1>
+    <div class="left-side">
+      <div class="title-section">
+        <a class="back-link" routerLink="/">
+          <span class="material-symbols-outlined back-icon">arrow_back_ios</span>
+          <span>Home</span>
+        </a>
+        <h1 class="main-title">Transaction Management</h1>
+      </div>
+      <div class="content-section">
+        <div class="nav">
+          <div class="filters">
+
+          </div>
+          <div class="buttons">
+            <button class="new-transaction-button button" mat-button (click)="openCreateTransactionDialog()">Create new</button>
+            <button class="delete-all-button button" mat-button (click)="openDeleteAllDialog()">Delete all</button>
+          </div>
+        </div>
+        <app-transactions-table></app-transactions-table>
+      </div>
     </div>
-    <div class="content-section">
-      <button class="new-transaction-button" mat-button (click)="openCreateTransactionDialog()">Create new</button>
-      <app-transactions-table></app-transactions-table>
+    <div class="right-side">
+      <span>
+        <img [ngSrc]="graphicDivSrc" width="1" height=50 class="logo" alt="Graphic Div">
+      </span>
     </div>
   </div>
 </main>
