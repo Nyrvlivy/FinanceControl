@@ -1,0 +1,105 @@
+.transaction-list-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 60%;
+
+  .table-container {
+    width: 100%;
+    margin: 0;
+
+    .table-header-container,
+    .scrollable-table-container {
+      table {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+
+        th, td {
+          white-space: nowrap;
+          padding: 8px;
+        }
+
+        tr {
+          &:nth-child(odd) {
+            background-color: #f4f4f4;
+          }
+
+          &:nth-child(even) {
+            background-color: #ffffff;
+          }
+        }
+
+        .mat-column-id {
+          width: 50px;
+          border-right: 1px solid #e1e1e1;
+        }
+
+        .mat-column-date {
+          width: 120px;
+        }
+
+        .mat-column-value {
+          width: 100px;
+        }
+
+        .mat-column-category {
+          width: 150px;
+          border-right: 1px solid #e1e1e1;
+        }
+
+        .mat-column-manage {
+          width: 120px;
+          text-align: center;
+        }
+      }
+    }
+
+    .scrollable-table-container {
+      max-height: 500px;
+      overflow-y: auto;
+    }
+
+    .mat-header-cell {
+      text-align: center;
+    }
+
+    .mat-paginator {
+      width: 100%;
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      height: 30px;
+      background-color: #0043CE;
+      color: white;
+      padding: 10px 30px;
+      font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+      gap: 25px;
+
+      .total-label {
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .total-value {
+        font-size: 14px;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.icon-edit {
+  color: green;
+}
+
+.icon-delete {
+  color: red;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 22;
+}
