@@ -184,7 +184,7 @@ Feel free to fork this project and contribute your ideas and improvements. Pleas
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](https://opensource.org/licenses/MIT) file for details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/Nyrvlivy/FinanceControl/blob/main/LICENSE) file for details.
 
 ##
 
