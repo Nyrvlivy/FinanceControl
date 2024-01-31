@@ -8,9 +8,9 @@
 <div align="center">
 
 ![Angular](https://img.shields.io/badge/Angular-v17-red)
-![SCSS](https://img.shields.io/badge/SCSS-4A154B-purple)
-![Angular Material](https://img.shields.io/badge/Angular_Material-v17-3F51B5-blue)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC-blue)
+![SCSS](https://img.shields.io/badge/SCSS-v1.70.0-yellow)
+![Angular Material](https://img.shields.io/badge/Angular_Material-v17-3F51B5)
+![TypeScript](https://img.shields.io/badge/TypeScript-v5.3.3-red)
 ![RxJS](https://img.shields.io/badge/RxJS-7-blue)
 
 </div>
@@ -51,9 +51,9 @@ This project is an **Angular Web Application** developed to interact with the Fi
 See a sample of how the application works:
 <div align="center">
   <img alt="Finance Control Web App Gif" src="./.github/assets/images/finance-control-overview.gif">
+  <br>
+  For more information, clone repository and fun!
 </div>
-
-For more information, clone repository and fun!
 
 ##
 
