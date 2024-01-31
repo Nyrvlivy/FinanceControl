@@ -1,13 +1,16 @@
-import {Component} from '@angular/core';
-import {MatDialogRef} from '@angular/material/dialog';
-import {CreateTransactionsPayload, TransactionsService} from '@shared/services/transactions.service';
-import {Transaction} from "@shared/types/transaction";
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
+import {
+  CreateTransactionsPayload,
+  TransactionsService,
+} from '@shared/services/transactions.service';
+import { Transaction } from '@shared/types/transaction';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-transactions-dialog',
   templateUrl: './create-transactions-dialog.component.html',
-  styleUrls: ['./create-transactions-dialog.component.scss']
+  styleUrls: ['./create-transactions-dialog.component.scss'],
 })
 export class CreateTransactionsDialogComponent {
   transactionInput: string = '';
@@ -16,9 +19,8 @@ export class CreateTransactionsDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<CreateTransactionsDialogComponent>,
     private transactionsService: TransactionsService,
-    private snackBar: MatSnackBar
-  ) {
-  }
+    private snackBar: MatSnackBar,
+  ) {}
 
   onCancelClick(): void {
     this.dialogRef.close();
@@ -29,30 +31,30 @@ export class CreateTransactionsDialogComponent {
   }
 
   private parseTransaction(line: string): Transaction | Error {
-    const data = line.split(",");
-    if (data.length !== 3) return new Error("Invalid Format");
+    const data = line.split(',');
+    if (data.length !== 3) return new Error('Invalid Format');
 
-    const [date, valueStr, category] = data.map(item => item.trim());
+    const [date, valueStr, category] = data.map((item) => item.trim());
     const parsedDate = new Date(date);
-    if (isNaN(parsedDate.getTime())) return new Error("Invalid Date Format");
+    if (isNaN(parsedDate.getTime())) return new Error('Invalid Date Format');
 
     const value = parseFloat(valueStr);
-    if (isNaN(value)) return new Error("Value must be a number");
-    if (value === 0) return new Error("Transaction value cannot be zero");
+    if (isNaN(value)) return new Error('Value must be a number');
+    if (value === 0) return new Error('Transaction value cannot be zero');
 
-    const dateWithoutTime = parsedDate.toISOString().split("T")[0];
-    return {date: dateWithoutTime, value, category};
+    const dateWithoutTime = parsedDate.toISOString().split('T')[0];
+    return { date: dateWithoutTime, value, category };
   }
 
   private showSnackBar(message: string): void {
-    this.snackBar.open(message, 'Close', {duration: 3000});
+    this.snackBar.open(message, 'Close', { duration: 3000 });
   }
 
   onSaveClick(): void {
     this.isCreateFormValid = true;
-    const lines = this.transactionInput.split("\n");
+    const lines = this.transactionInput.split('\n').filter((line) => !!line);
 
-    if (lines.every(line => !this.isValidLine(line))) {
+    if (lines.every((line) => !this.isValidLine(line))) {
       this.showSnackBar('Invalid or empty transaction!');
       this.isCreateFormValid = false;
       return;
@@ -61,7 +63,7 @@ export class CreateTransactionsDialogComponent {
     const transactions: Transaction[] = [];
     const error: string[] = [];
 
-    lines.forEach(line => {
+    lines.forEach((line) => {
       if (!this.isValidLine(line)) return;
       const result = this.parseTransaction(line);
       if (result instanceof Error) {
@@ -77,7 +79,7 @@ export class CreateTransactionsDialogComponent {
       return;
     }
 
-    const payload: CreateTransactionsPayload = {transactions};
+    const payload: CreateTransactionsPayload = { transactions };
     this.transactionsService.createTransactions(payload).subscribe({
       next: () => {
         this.showSnackBar('Transaction created successfully!');
@@ -86,7 +88,7 @@ export class CreateTransactionsDialogComponent {
       error: (err) => {
         this.showSnackBar(`Error: ${err.message}`);
         this.isCreateFormValid = false;
-      }
+      },
     });
   }
 }
