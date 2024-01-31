@@ -51,9 +51,9 @@ This project is an **Angular Web Application** developed to interact with the Fi
 See a sample of how the application works:
 <div align="center">
   <img alt="Finance Control Web App Gif" src="./.github/assets/images/finance-control-overview.gif">
+  <br>
+  For more information, clone repository and fun!
 </div>
-
-For more information, clone repository and fun!
 
 ##
 
